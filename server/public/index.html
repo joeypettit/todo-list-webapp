@@ -7,10 +7,44 @@
     <link href="./style.css" rel="stylesheet"/>
     <script src="./jquery.js"></script>
     <script src="./client.js"></script>
-    <title>Document</title>
+    <!-- bootstrap cdn -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    
+    <title>To-Do Web App</title>
 </head>
 <body>
-    <div class="container">This is my todo list</div>
+
+
+    <div>This is my todo list</div>
+        <ul>
+            <li data-taskid="1">
+                <button class="task" >
+                    <span class="taskName">TASK NAME</span>
+                    <span class="dueDate">DUE DATE</span>
+                </button>
+                <div class="collapsible">
+                    <div class="dateCompleted">Completed: blah-blah-blah</div>
+                    <p class="notes">These are the notes</p>
+                </div>
+            </li>
+            <li data-taskid="2">
+                <button class="task" >
+                    <span class="taskName">TASK NAME</span>
+                    <span class="dueDate">DUE DATE</span>
+                </button>
+                <div class="collapsible" >
+                    <div class="dateCompleted">Completed: blah-blah-blah</div>
+                    <p class="notes">These are the notes</p>
+                </div>
+            </li>
+
+
+
+
+        </ul>
+    
     
 </body>
 </html>
