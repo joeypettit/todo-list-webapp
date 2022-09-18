@@ -1,0 +1,18 @@
+:root {
+    --checkBlue: rgb(50, 115, 246);
+    --medBlue: rgb(127,167,249);
+    --whiteBlue: rgb(217,229,253);
+
+    --fullGreen:rgb(115, 231, 97);
+    --lightGreen: rgb(188, 238, 180);;
+
+    --lightGrey: rgb(204,204,204);
+    --medGrey: rgb(165, 165, 165);
+    --darkGrey: rgb(79,79,79);
+  }
+
+
+
+ul {
+    list-style-type:none;
+}
