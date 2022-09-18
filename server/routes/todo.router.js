@@ -1,3 +1,4 @@
+const { query } = require('express');
 const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
@@ -41,9 +42,37 @@ router.post('/', (req, res) => {
 });
 
 // Create DELETE endpoint to delete a task
+router.delete('/:taskid', (req, res) => {
+    // assign req.params. taskid to variable
+    let toDeleteId = req.params.taskid;
+    console.log('In DELETE. Task to be deleted:', toDeleteId);
+    // query to send
+    let queryText = `DELETE FROM "tasks" WHERE "id" = $1;`
+
+    pool.query(queryText, [toDeleteId])
+    .then(() => {
+        res.sendStatus(204);
+    }).catch((error) => {
+        console.log('Error with DELETE', error);
+        res.sendStatus(500);
+    })
+}); // END router.delete
 
 // Create PUT endpoint to toggle is_complete
+router.put('/toggleComplete/:taskid', (req, res) => {
+     // assign req.params. taskid to variable
+    let toToggleId = req.params.taskid;
+    console.log('In PUT (toggle). Task to be toggled:', toToggleId);
+    // query to send
+    let queryText = `UPDATE "tasks" SET "is_complete"= (NOT "is_complete") WHERE "id"=$1;`;
 
+    pool.query(queryText, [toToggleId])
+    .then(() => {
+        console.log('Toggle complete sucessful');
+    })catch((error) => {
+        console.log('Error with PUT(toggle)', error);
+        res.sendStatus(500);
+    })
 // Create PUT endpoint to edit existing task
 
 module.exports = router;
