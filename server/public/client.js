@@ -8,12 +8,12 @@ function onReady(){
     console.log('js and jQ loaded');
 
     // click handlers
-    $('.task').on('click', toggleCollapse);
+    $('#todo-list').on('click', toggleCollapse)
 
    // load current list from server
    refreshList();
 
-    //
+    // 
 
 }
 
@@ -21,10 +21,9 @@ function toggleCollapse(event){
     // store task id as variable
     let taskId = $(event.target).closest('li').data('taskid');
 
-    // toggle visibility of notes when button clicked
+    // toggle visibility of notes/date completed when button clicked
     $(event.target).parent().siblings('.collapsible').toggle();
     
-
 }
 
 
@@ -46,23 +45,31 @@ function refreshList(){
             console.log('iscomplete is:, ', task.is_complete);
             $('#todo-list').append(`
                 <li data-taskid="${task.id}">
-                    <div class="checkboxBox">
+                    <div class="checkbox-box">
                         ${(task.is_complete === true) ? `<input type="checkbox" name="checkbox-${task.id}" checked>` :`<input type="checkbox" name="checkbox-${task.id}"/>`}
                     </div>
-                    <div class="task" >
-                        <span class="taskName">${task.task_name}</span>
-                        <span class="dueDate">Due: ${task.due}</span>
+                    <div class="task-info">
+                        <div class="task" >
+                            <span class="taskName">${task.task_name}</span>
+                            <span class="dueDate">Due: ${task.due}</span>
+                        </div>
+                        <div class="collapsible">
+                            <div class="dateCompleted">Completed: ${task.date_completed}</div>
+                            <p class="notes">${task.notes}</p>
+                        </div>
                     </div>
-                    <div class="collapsible">
-                        <div class="dateCompleted">Completed: ${task.date_completed}</div>
-                        <p class="notes">${task.notes}</p>
-                    </div>
-
+                    
                 </li>
             `)
         }
-
     })
+}
+
+// add task
+function addTask(){
+
+
+
 
 
 }
