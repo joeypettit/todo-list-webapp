@@ -16,3 +16,7 @@
 ul {
     list-style-type:none;
 }
+
+.checkboxBox{
+  background-color: var(--lightGrey);
+}

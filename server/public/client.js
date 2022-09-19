@@ -46,17 +46,16 @@ function refreshList(){
             console.log('iscomplete is:, ', task.is_complete);
             $('#todo-list').append(`
                 <li data-taskid="${task.id}">
-                    <div>
-                        <label for="checkbox-${task.id}>Complete:</label>
+                    <div class="checkboxBox">
                         ${(task.is_complete === true) ? `<input type="checkbox" name="checkbox-${task.id}" checked>` :`<input type="checkbox" name="checkbox-${task.id}"/>`}
                     </div>
                     <div class="task" >
                         <span class="taskName">${task.task_name}</span>
-                        <span class="dueDate">DUE DATE</span>
+                        <span class="dueDate">Due: ${task.due}</span>
                     </div>
                     <div class="collapsible">
-                        <div class="dateCompleted">Completed: blah-blah-blah</div>
-                        <p class="notes">These are the notes</p>
+                        <div class="dateCompleted">Completed: ${task.date_completed}</div>
+                        <p class="notes">${task.notes}</p>
                     </div>
 
                 </li>
