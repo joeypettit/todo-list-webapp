@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/joeypettit/todo-list-webapp#readme",
   "dependencies": {
     "express": "^4.18.1",
+    "moment": "^2.29.4",
     "pg": "^8.8.0"
   }
 }

@@ -7,6 +7,9 @@ let nextEditId = 0;
 
 // onReady function
 function onReady(){
+    
+
+    
 
     console.log('js and jQ loaded');
 
@@ -53,28 +56,41 @@ function refreshList(){
     }).then((response) => {
         console.log('GET sucessful, incoming objects:', response);
 
+        
+        
+
         //empty list
         $('#todo-list').empty();
         
         //append list items
         for(let task of response){
-            console.log('iscomplete is:, ', task.is_complete);
+
+            // convert due date to readable format
+            let dueDate = task.due;
+           
+
+
+
+
+
             $('#todo-list').append(`
                 <li data-taskid="${task.id}">
-                    <div class="checkbox-box">
-                        ${(task.is_complete === true) ? `<input class="completeCheck" type="checkbox" name="checkbox-${task.id}" checked>` :`<input class="completeCheck" type="checkbox" name="checkbox-${task.id}"/>`}
-                    </div>
-                    <div class="task-info">
-                        <div class="task" >
-                            <span class="taskName">${task.task_name}</span>
-                            <span class="dueDate">Due: ${task.due}</span>
-                            <button class="showNotesButton">Notes</button>
-                            <button class="editButton">Edit</button>
-                            <button class="deleteButton">Delete</button>
+                    <div class="taskRow"> 
+                        <div class="checkbox-box">
+                            ${(task.is_complete === true) ? `<input class="completeCheck" type="checkbox" name="checkbox-${task.id}" checked>` :`<input class="completeCheck" type="checkbox" name="checkbox-${task.id}"/>`}
                         </div>
-                        <div class="collapsible hiddenFirst" >
-                            <div class="dateCompleted">Completed: ${task.date_completed}</div>
-                            <p class="notes">${task.notes}</p>
+                        <div class="task-info">
+                            <div class="task" >
+                                <div class="taskName">${task.task_name}</div>
+                                <div class="dueDate">Due: ${task.due}</div>
+                                <button class="showNotesButton">Notes</button>
+                                <button class="editButton">Edit</button>
+                                <button class="deleteButton">Delete</button>
+                            </div>
+                            <div class="collapsible hiddenFirst" >
+                                <div class="dateCompleted">Completed: ${task.date_completed}</div>
+                                <p class="notes">${task.notes}</p>
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -143,7 +159,9 @@ function completeToggle(event){
         data: {dateCompleted, isComplete}
     }).then( () => {
         // refresh list
+        // isComplete ? $(event.target).parent().siblings('.task-info').removeClass('task-info').addClass('complete') : $(event.target).closest('.complete').removeClass('complete').addClass('task');
         refreshList();
+        
     }).catch((error) =>{
         console.log('Error with toggle:', error);
     })

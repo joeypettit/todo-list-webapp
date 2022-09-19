@@ -11,10 +11,6 @@
     --darkGrey: rgb(79,79,79);
   }
 
-*{
-  box-sizing: border-box;
-}
-
 #newTaskForm{
   background-color: var(--checkBlue);
 }
@@ -23,6 +19,30 @@
     background-color: var(--checkBlue);
   }
 
+.task{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: .5em;
+  border-radius: .5em;
+  width: 30em;
+}
+
+#todo-list{
+  width: 800px;
+  padding-left:0;
+
+}
+
+
+.taskRow{
+  display: flex;
+  flex-direction: row;
+  margin: 1em;
+  padding: .5em;
+  background-color: var(--lightGrey);
+  border-radius: .5em;
+}
 
 .hiddenFirst { 
   display: none; 
@@ -33,13 +53,24 @@ ul {
 }
 
 .checkbox-box{
-  background-color: var(--lightGrey);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--darkGrey);
+  width:20px;
+  border-radius: .5em 0em 0em .5em;
+
 }
 
-.task{
+.task-info{
   background-color: var(--lightGreen);
+  border-radius: 0em .5em .5em 0em;
 }
 
 .collapsible{
   background-color: var(--whiteBlue);
+}
+
+.complete{
+  background-color: var(--fullGreen);
 }
