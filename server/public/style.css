@@ -11,12 +11,30 @@
     --darkGrey: rgb(79,79,79);
   }
 
+*{
+  box-sizing: border-box;
+}
 
+#newTaskForm{
+  background-color: var(--checkBlue);
+}
+
+.hiddenFirst { 
+  display: none; 
+}
 
 ul {
     list-style-type:none;
 }
 
-.checkboxBox{
+.checkbox-box{
   background-color: var(--lightGrey);
+}
+
+.task{
+  background-color: var(--lightGreen);
+}
+
+.collapsible{
+  background-color: var(--whiteBlue);
 }

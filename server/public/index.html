@@ -10,40 +10,22 @@
     <title>To-Do Web App</title>
 </head>
 <body>
+    <h1>To-Do Web App</h1>
+    <button id="newButton">New Task</button>
+    <div id="newTaskForm" class = "hiddenFirst">
+        <h2>New Task:</h2>
+        <label for="new-task">New Task:</label>
+        <input name ="new-task" type="text" id="taskIn">
+        <label for="due-date">Due Date:</label>
+        <input name ="due-date" type="date" id="dueIn">
+        <label for="notes:">Notes</label>
+        <input name="notes" type="text" id="notesIn"/>
+        <button id="addButton">Add</button>
+    </div>
 
-
-    <div>This is my todo list</div>
-
-
-        <ul id="todo-list">
-            <li data-taskid="1">
-                <input type="checkbox" checked="true"  />
-                <div class="task" >
-                    <span class="taskName">TASK NAME</span>
-                    <span class="dueDate">DUE DATE</span>
-                </div>
-                <div class="collapsible">
-                    <div class="dateCompleted">Completed: blah-blah-blah</div>
-                    <p class="notes">These are the notes</p>
-                </div>
-
-            </li>
-            <li data-taskid="2">
-                <button class="task" >
-                    <input type="checkbox" disabled="true"/>
-                    <span class="taskName">TASK NAME</span>
-                    <span class="dueDate">DUE DATE</span>
-                </button>
-                <div class="collapsible" >
-                    <div class="dateCompleted">Completed: blah-blah-blah</div>
-                    <p class="notes">These are the notes</p>
-                </div>
-            </li>
-
-
-
-
-        </ul>
+    <ul id="todo-list">
+        <!-- // new tasks here -->
+    </ul>
     
     
 </body>
