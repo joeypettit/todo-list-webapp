@@ -2,6 +2,9 @@
 // call onReady
 $(onReady);
 
+// set to id of row when edit button is pressed.
+let nextEditId = 0;
+
 // onReady function
 function onReady(){
 
@@ -25,6 +28,13 @@ function onReady(){
             }
         });
     })
+    // edit task button handler, with toggle function
+    $('#todo-list').on('click', '.editButton', (event)=> {
+        nextEditId = $(event.target).closest('li').data('taskid');
+        $('#editTaskForm').toggle();
+    })
+    $('#updateTask').on('click', updateTask);
+
     // add button handler
     $('#addButton').on('click', addTask);
     // delete handler
@@ -32,9 +42,6 @@ function onReady(){
     // checkbox (complete) handler
     $('#todo-list').on('click', '.completeCheck', completeToggle)
 }
-
-    // store task id as variable
-    // let taskId = $(event.target).closest('li').data('taskid');
 
 
 // refresh list
@@ -122,9 +129,10 @@ function deleteTask(event){
 
 function completeToggle(event){
     // USE THIS TO CAPTURE TODAYS DATE YEAR-MONTH-DAY
-    let dateCompleted = new Date().toISOString().slice(0, 10)
+    let dateCompleted = new Date().toISOString().slice(0, 10);
+    // caputer task id
     let taskId = $(event.target).closest('li').data('taskid');
-
+    // check if checkbox is checked or not 
     let isComplete = $(event.target).closest('.completeCheck').prop('checked');
     console.log("is checked?", isComplete);
     console.log('todays date and ID', dateCompleted, taskId);
@@ -139,6 +147,35 @@ function completeToggle(event){
     }).catch((error) =>{
         console.log('Error with toggle:', error);
     })
+}
+
+function updateTask(event){
+    // store task id
+
+
+    let editedTask = {
+        taskName: $('#taskNameEdit').val(),
+        dateCompleted: $('#dateCompleteEdit').val(),
+        dueDate: $('#dueEdit').val(),
+        notes: $('#notesEdit').val()
+    }
+
+    $.ajax({
+        method: 'PUT',
+        url: `/todo/${nextEditId}`,
+        data: editedTask
+    }).then( () => {
+        // refresh list
+        refreshList();
+        $('#editTaskForm').toggle();
+    }).catch((error) =>{
+        console.log('Error with toggle:', error);
+    })
+    
+     
+
+
+
 }
 
 

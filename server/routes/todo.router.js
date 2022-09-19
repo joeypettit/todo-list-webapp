@@ -114,16 +114,14 @@ router.put('/toggleComplete/:taskid', (req, res) => {
 router.put('/:taskid', (req, res) => {
     console.log('In PUT (edit). Task to be edited:', req.params.taskid, req.body);
     // assign req.params.taskid and payload to variables
-   let toToggleId = req.params.taskid;
-   let {taskName, isComplete, dateCompleted, dueDate, notes} = req.body;
+   let toEditId = req.params.taskid;
+   console.log('the id of this thing is', toEditId);
+   let {taskName, dateCompleted, dueDate, notes} = req.body;
 
    // change empty fields into null datatype
    switch ('') {
     case taskName:
         taskName = null;
-        break;
-    case isComplete:
-        isComplete = null;
         break;
     case dateCompleted:
         dateCompleted = null;
@@ -136,17 +134,17 @@ router.put('/:taskid', (req, res) => {
         break;
    }
 
-   console.log("Checking for Nulls", taskName, isComplete, dateCompleted,'duedate:', dueDate,'notes:', notes);
+   console.log("Checking for Nulls", taskName, dateCompleted,'duedate:', dueDate,'notes:', notes);
 
    // query to send, toggle of value happens in query command
-   let queryText = `UPDATE "tasks" SET "task_name"=$2, "is_complete"=$3, "date_completed"=$4, "due"=$5, "notes"=$6 WHERE "id"=$1;`;
+   let queryText = `UPDATE "tasks" SET "task_name"=$2, "date_completed"=$3, "due"=$4, "notes"=$5 WHERE "id"=$1;`;
 
-   pool.query(queryText, [toToggleId, taskName, isComplete, dateCompleted, dueDate, notes])
+   pool.query(queryText, [toEditId, taskName, dateCompleted, dueDate, notes])
    .then(() => {
        console.log('Edit task sucessful');
        res.sendStatus(200);
    }).catch((error) => {
-       console.log('Error with PUT(toggle)', error);
+       console.log('Error with PUT(edit)', error);
        res.sendStatus(500);
    });
 }); // end PUT (edit task)
