@@ -11,12 +11,16 @@
 </head>
 <body>
     <h1>To-Do Web App</h1>
-    <button id="addButton">New Task</button>
-    <div id="newTaskForm">
+    <button id="newButton">New Task</button>
+    <div id="newTaskForm" class = "hiddenFirst">
         <h2>New Task:</h2>
-        <input type="text">
-        <input type="date">
-        <input type="text">
+        <label for="new-task">New Task:</label>
+        <input name ="new-task" type="text" id="taskIn">
+        <label for="due-date">Due Date:</label>
+        <input name ="due-date" type="date" id="dueIn">
+        <label for="notes:">Notes</label>
+        <input name="notes" type="text" id="notesIn"/>
+        <button id="addButton">Add</button>
     </div>
 
     <ul id="todo-list">
