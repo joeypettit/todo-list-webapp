@@ -120,20 +120,25 @@ function deleteTask(event){
     });
 }
 
-function completeToggle(){
+function completeToggle(event){
     // USE THIS TO CAPTURE TODAYS DATE YEAR-MONTH-DAY
-    let today = new Date().toISOString().slice(0, 10)
+    let dateCompleted = new Date().toISOString().slice(0, 10)
     let taskId = $(event.target).closest('li').data('taskid');
 
-    console.log('todays date and ID', today, taskId);
+    let isComplete = $(event.target).closest('.completeCheck').prop('checked');
+    console.log("is checked?", isComplete);
+    console.log('todays date and ID', dateCompleted, taskId);
     
     $.ajax({
         method: 'PUT',
-        url: '/toggleComplete/'
+        url: `/todo/toggleComplete/${taskId}`,
+        data: {dateCompleted, isComplete}
+    }).then( () => {
+        // refresh list
+        refreshList();
+    }).catch((error) =>{
+        console.log('Error with toggle:', error);
     })
-
-
-
 }
 
 
