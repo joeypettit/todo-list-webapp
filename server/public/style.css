@@ -1,14 +1,15 @@
 :root {
     --checkBlue: rgb(50, 115, 246);
-    --medBlue: rgb(127,167,249);
-    --whiteBlue: rgb(217,229,253);
+    --medBlue: rgb(157, 214, 255);
+    --whiteBlue: rgb(213, 232, 240);
 
     --fullGreen:rgb(115, 231, 97);
     --lightGreen: rgb(188, 238, 180);;
 
-    --lightGrey: rgb(204,204,204);
-    --medGrey: rgb(165, 165, 165);
-    --darkGrey: rgb(79,79,79);
+    --buttonGrey: rgb(196, 223, 223);
+    --lightGrey: rgb(172, 186, 183);
+    --medGrey: rgb(131, 148, 145);
+    --darkGrey: rgb(69, 80, 77);
   }
 
 #newTaskForm{
@@ -25,11 +26,11 @@
   justify-content: space-between;
   padding: .5em;
   border-radius: .5em;
-  width: 30em;
+  width: 500px;
 }
 
 #todo-list{
-  width: 800px;
+  width: 552px;
   padding-left:0;
 
 }
@@ -38,10 +39,11 @@
 .taskRow{
   display: flex;
   flex-direction: row;
-  margin: 1em;
-  padding: .5em;
+  margin: 10px 5px;
+  padding: 3px;
   background-color: var(--lightGrey);
   border-radius: .5em;
+  justify-content: center;
 }
 
 .hiddenFirst { 
@@ -56,14 +58,19 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: var(--darkGrey);
+  background-color: var(--medBlue);
   width:20px;
   border-radius: .5em 0em 0em .5em;
 
 }
 
+button{
+  background-color: var(--buttonGrey);
+  border-radius: .5em;
+}
+
 .task-info{
-  background-color: var(--lightGreen);
+  background-color: var(--whiteBlue);
   border-radius: 0em .5em .5em 0em;
 }
 
