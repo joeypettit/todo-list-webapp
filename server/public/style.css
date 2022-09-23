@@ -1,5 +1,5 @@
 :root {
-    --checkBlue: rgb(50, 115, 246);
+    --checkBlue: rgb(63, 110, 240);
     --medBlue: rgb(157, 214, 255);
     --whiteBlue: rgb(213, 232, 240);
 
@@ -16,8 +16,37 @@
   background-color: var(--checkBlue);
 }
 
+
+h2{
+  padding:.5em;
+  background-color: var(--whiteBlue);
+  border-radius: .5em;
+  margin: 0px;
+  text-align: center;
+}
+
+label{
+  display:inline-block;
+  clear: left;
+  text-align: right;
+ 
+}
+
+
+
 #editTaskForm{
+    position: fixed;
+    box-sizing: border-box;
+    min-width: 165px;
+    width: 40%;
+    top: 15%;
+    left: 30%;
+    padding: 1em;
+    border-radius: 1em;
     background-color: var(--checkBlue);
+    border-style: solid;
+    border-width: 4px;
+    border-color: var(--darkGrey);
   }
 
 .task{
@@ -29,10 +58,27 @@
   width: 500px;
 }
 
+#edit-box{
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+}
+
 #todo-list{
   width: 552px;
   padding-left:0;
 
+}
+
+#notesEdit{
+  height: 4em;
+}
+
+label{
+  background-color: var(--whiteBlue);
+  padding: .10em .25em 0em .25em;
+  border-radius: .5em .5em 0em 0em;
+  margin: .2em auto 0em auto;
 }
 
 
@@ -79,5 +125,5 @@ button{
 }
 
 .complete{
-  background-color: var(--fullGreen);
+  background-color: var(--fullGreen) !important;
 }

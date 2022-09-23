@@ -23,20 +23,23 @@
         <button id="addButton">Add</button>
     </div>
     <div id="editTaskForm" class = "hiddenFirst">
-        <h2>Edit Task:</h2>
-        <label for="edit-task-name">Task Name:</label>
-        <input name ="edit-task-name" type="text" id="taskNameEdit">
-
-        <label for="edit-due-date">Due Date:</label>
-        <input name ="edit-due-date" type="date" id="dueEdit">
-
-        <label for="edit-notes:">Notes:</label>
-        <input name="edit-notes" type="text" id="notesEdit"/>
-
-        <label for="edit-date-complete:">Date Completed:</label>
-        <input name="edit-date-complete" type="date" id="dateCompleteEdit"/>
-
-        <button id="updateTask">Update</button>
+        <h2>Edit Task</h2>
+        <div id="edit-box">
+            <label for="edit-task-name">Task Name</label>
+            <input name ="edit-task-name" type="text" id="taskNameEdit">
+            
+            <label for="edit-due-date">Due Date</label>
+            <input name ="edit-due-date" type="date" id="dueEdit">
+            
+            <label for="edit-date-complete:">Date Completed</label>
+            <input name="edit-date-complete" type="date" id="dateCompleteEdit"/>
+            
+            <label for="edit-notes:">Notes</label>
+            <textarea name="edit-notes" type="text" id="notesEdit"></textarea>
+            
+            <button id="updateTask">Update</button>
+            <button id="cancelEdit">Cancel</button>
+        </div>
     </div>
 
     <ul id="todo-list">

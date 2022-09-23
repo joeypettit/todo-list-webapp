@@ -32,11 +32,23 @@ function onReady(){
         });
     })
     // edit task button handler, with toggle function
+    // 
     $('#todo-list').on('click', '.editButton', (event)=> {
         nextEditId = $(event.target).closest('li').data('taskid');
+        
+        
+        // previous values in edit
+        $('#taskNameEdit').val($(event.target).siblings('.taskName').text()); 
+        $('#dueEdit').val();
+        $('#dateCompletedEdit').val();
+        $('#notesEdit').val($(event.target).parent().siblings('.collapsible').children('.notes').text());
+
         $('#editTaskForm').toggle();
     })
     $('#updateTask').on('click', updateTask);
+
+    // cancel edit button handler
+    $('#cancelEdit').on('click', ()=> $('#editTaskForm').toggle());
 
     // add button handler
     $('#addButton').on('click', addTask);
@@ -81,7 +93,7 @@ function refreshList(){
                         </div>
                         <div class="task-info">
                             <div class="task" >
-                                <div class="taskName">${task.task_name}</div>
+                                <div class="taskName" data-blah="blah">${task.task_name}</div>
                                 <div class="dueDate">Due: ${task.due}</div>
                                 <button class="showNotesButton">Notes</button>
                                 <button class="editButton">Edit</button>
@@ -161,6 +173,8 @@ function completeToggle(event){
         // refresh list
         // isComplete ? $(event.target).parent().siblings('.task-info').removeClass('task-info').addClass('complete') : $(event.target).closest('.complete').removeClass('complete').addClass('task');
         refreshList();
+        $(event.target).siblings('.task-info').addClass('complete');
+        // apply .complete to completed task
         
     }).catch((error) =>{
         console.log('Error with toggle:', error);
@@ -169,7 +183,6 @@ function completeToggle(event){
 
 function updateTask(event){
     // store task id
-
 
     let editedTask = {
         taskName: $('#taskNameEdit').val(),
